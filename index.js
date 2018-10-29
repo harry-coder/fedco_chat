@@ -21,12 +21,20 @@ io.on('connection', function (socket) {
     console.log("User is connected");
 
 
-    socket.on('join', function (userName) {
+    socket.on('join', function (data) {
 
-        console.log(userName + "has joined");
 
-        io.broadcast.emit('userjoinedthechat', userNickname + " : has joined the chat ");
+        socket.join(data.email);
 
+        console.log(data.email + "has joined");
+
+       // io.broadcast.emit('userjoinedthechat', userNickname + " : has joined the chat ");
+
+    });
+
+    socket.on('send_message',function (data) {
+
+        io.sockets.in(data.email).emit('receieve_message',{msg:data.msg});
     });
     socket.on('disconnect', function () {
         console.log("User is disconnected");
