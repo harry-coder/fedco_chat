@@ -4,14 +4,14 @@ var http = require('http').Server(express);
 var io = require('socket.io')(http);
 
 let app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: false}));
 let port = process.env.PORT || 8080;
 
 
 app.get('/', function (req, res) {
 
-    res.sendFile('index.html');
+    res.send("Server started")
 
 });
 
@@ -35,7 +35,7 @@ io.on('connection', function (socket) {
 
 
 });
-http.listen(process.env.PORT || 3000, function () {
+app.listen(process.env.PORT || 3000, function () {
 
     console.log("Server started at port 3000")
 });
