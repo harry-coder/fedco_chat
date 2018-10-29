@@ -35,7 +35,7 @@ io.on('connection', function (socket) {
 
 
 });
-http.listen(port, function () {
+http.listen(process.env.PORT || 3000, function () {
 
     console.log("Server started at port 8080")
 });
