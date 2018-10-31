@@ -14,6 +14,8 @@ app.get('/', function (req, res) {
 
     res.send("Server Started in 3000")
 
+    //peopleList.
+
 });
 
 
